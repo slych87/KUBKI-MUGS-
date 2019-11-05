@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Napełnianie kubków</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+       
+        h1{
+            font-family: 'Lobster', cursive;
+            text-align: center;
+            font-size: 60px;
+            transform: rotate(-10deg);
+        }
+        .kubek{
+            width: 200px;
+            height: 200px;
+            border-left: 3px solid black; 
+            border-right: 3px solid black;
+            border-bottom: 3px solid black;
+            border-radius: 0 0 20px 20px;
+            cursor: pointer;
+            float: left;
+            margin: 20px;
+            background-size: 200%  200%;
+            background-image: linear-gradient(to top, #FFF700 50%, transparent 50% );
+        }
+        .zolta{
+            background-image: linear-gradient(to top, #FFF700 50%, transparent 50% );
+        }
+        .zielona{
+            background-image: linear-gradient(to top, #299617 50%, transparent 50% );
+        }
+        .niebieska{
+            background-image: linear-gradient(to top, #5DADEC 50%, transparent 50% );
+        }
+        .fioletowa{
+            background-image: linear-gradient(to top, #9C51B6 50%, transparent 50% );
+        }
+        .czerwona{
+            background-image: linear-gradient(to top, #FF3855 50%, transparent 50% );
+        }
+        .brazowa{
+            background-image: linear-gradient(to top, #A83731 50%, transparent 50% );
+        }
+         /*
+            zółty: #FFF700;
+            zielony: #299617;
+            niebieski: #5DADEC;
+            fioletowty:#9C51B6;
+            czerwony: #FF3855;
+            brązowy: #A83731
+        */
+    </style>
+</head>
+<body>
+    <h1>Napełnianie kubków</h1>
+
+    <div class="kubek zolta" poziom="0"></div>
+    <div class="kubek zielona" poziom="0"></div>
+    <div class="kubek niebieska" poziom="0"></div>
+    <div class="kubek fioletowa" poziom="0"></div>
+    <div class="kubek czerwona" poziom="0"></div>
+    <div class="kubek brazowa" poziom="0"></div>
+</body>
+<script>
+    function kubekKlik(evt){
+        let poziom = Number(this.getAttribute('poziom'));
+        poziom += 24;
+        
+        if(poziom <= 96){
+            this.style.backgroundPosition = "0 " + poziom + "%";
+            this.setAttribute('poziom',poziom);
+        }else{
+            this.style.cursor = "not-allowed";
+        }
+        
+    }
+
+    let kubki = document.querySelectorAll('.kubek');
+    kubki.forEach(kubek =>{
+        kubek.addEventListener('click', kubekKlik)
+    })
+</script>
+</html>
